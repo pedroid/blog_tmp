@@ -9,15 +9,14 @@
 ##Usasge explaination with example
 在Javascript 語法上如果要定義一個function，傳統的方法是
 
-@code
 
-var adder = function(a,b){ 
+    var adder = function(a,b){ 
 
-return a+b; 
+        return a+b; 
 
-}
+    }
 
-@codee
+
 
 然後用adder(3,2)就可以得到5。
 如果用Arror function的描述方式就可以得到一個較精簡的寫法：
