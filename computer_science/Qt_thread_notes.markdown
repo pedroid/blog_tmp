@@ -3,8 +3,8 @@
 tag: qt, thread
 
 ## Notes
-1. 物件跟thread 的關聯性不大，但物件實例化後的member function是在哪一個thread中執行就需要去釐清。
-2. 物件在哪一個thread中被實例化，則該物件(包含旗下的property)存在於該thread
+1. 物件在哪一個thread中被實例化，則該物件(包含旗下的property)存在於該thread
+2. 物件實例化後的member function是在哪一個thread中執行就需要去釐清。
 3. 當想要存取別的thread中的資料時，使用signal/slots
 
 ##架構

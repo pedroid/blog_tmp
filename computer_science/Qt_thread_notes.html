@@ -11,8 +11,8 @@
 <p>tag: qt, thread</p>
 <h2 id="notes">Notes</h2>
 <ol>
-<li>物件跟thread 的關聯性不大，但物件實例化後的member function是在哪一個thread中執行就需要去釐清。</li>
 <li>物件在哪一個thread中被實例化，則該物件(包含旗下的property)存在於該thread</li>
+<li>物件實例化後的member function是在哪一個thread中執行就需要去釐清。</li>
 <li>當想要存取別的thread中的資料時，使用signal/slots</li>
 </ol>
 <h2 id="">架構</h2>
