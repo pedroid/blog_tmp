@@ -1,4 +1,7 @@
 #Arrow function
+!tag javascript
+!publish
+
 [reference](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 
 ##feature
@@ -21,8 +24,8 @@
 然後用adder(3,2)就可以得到5。
 如果用Arror function的描述方式就可以得到一個較精簡的寫法：
 
-@code
-var adder = (a,b)=>a+b;
-@codee
+
+    var adder = (a,b)=>a+b;
+
 
 只用了一行就完成了。

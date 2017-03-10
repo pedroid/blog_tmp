@@ -1,6 +1,8 @@
 #QT Thread 使用筆記
 
-tag: qt, thread
+!tag qt, thread 
+!publish
+
 
 ## Notes
 1. 物件在哪一個thread中被實例化，則該物件(包含旗下的property)存在於該thread
