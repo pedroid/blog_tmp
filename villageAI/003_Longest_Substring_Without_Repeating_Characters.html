@@ -1,0 +1,64 @@
+<!DOCTYPE html><html>
+<head>
+<script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>
+</head>
+<body>
+<div class='container'>
+<div class='row'>
+<div class='col-lg-12 bg-warning'>
+<h1 id="003longestsubstringwithoutrepeatingcharacters">003 Longest Substring Without Repeating Characters</h1>
+<h2 id="description">description</h2>
+<p>Given a string, find the length of the longest substring without repeating characters.</p>
+<h3 id="examples">Examples:</h3>
+<p>Given "abcabcbb", the answer is "abc", which the length is 3.</p>
+<p>Given "bbbbb", the answer is "b", with the length of 1.</p>
+<p>Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.</p>
+<h2 id="solution">Solution</h2>
+<pre><code>int Solution::lengthOfLongestSubstring(string s){    
+unordered_map&lt;char, int&gt; hash;      
+int results = 0;
+for (int i = 0; i &lt; s.length(); i++){
+    if (hash.empty()) {
+        hash[s[i]] = i; 
+        results = 1;
+    }else{ // not empty
+        if (hash.find(s[i]) != hash.end()){ //found
+            hash.erase(hash.begin(), hash.find(s[i]));
+            if (hash.size() &gt; results) {
+                results = hash.size();                  
+            }               
+            hash[s[i]] = i;
+        }else{ // not found!
+            hash[s[i]] = i;
+            if (hash.size() &gt; results) {
+                results = hash.size();
+            }
+        }
+    }
+}
+
+
+return results;
+};
+</code></pre>
+<h2 id="othersolution">Other Solution</h2>
+<pre><code>   public int lengthOfLongestSubstring(String s) {
+    if (s.length()==0) return 0;
+    HashMap&lt;Character, Integer&gt; map = new HashMap&lt;Character, Integer&gt;();
+    int max=0;
+    for (int i=0, j=0; i&lt;s.length(); ++i){
+        if (map.containsKey(s.charAt(i))){
+            j = Math.max(j,map.get(s.charAt(i))+1);
+        }
+        map.put(s.charAt(i),i);
+        max = Math.max(max,i-j+1);
+    }
+    return max;
+}
+</code></pre></div>
+</div>
+</div>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html><html>
+<head>
+<script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>
+</head>
+<body>
+<div class='container'>
+<div class='row'>
+<div class='col-lg-12 bg-warning'>
+<h1 id="002addtwonumbers">002 Add Two Numbers</h1>
+<h2 id="description">description</h2>
+<p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<h3 id="example">Example:</h3>
+<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)
+Output: 7 -&gt; 0 -&gt; 8</p>
+<h2 id="">心得</h2>
+<p>向量的相加沒有想像中的簡單，要處理overflow，以及處理不同長度的vector，還有要熟悉ListNode以及pointer to ListNode的操作，花了一個下午來處理這個問題，後來看了一下其他人的解答，程式碼比想像中乾淨簡潔多了，還有許多觀念看來需要重新解構再理解。</p>
+<ol>
+<li><p>while 迴圈處理ListNode，可以在while() 的條件中放結束的條件，我的作法是用while(true)然後在迴圈中判斷結束的條件以break，其實效果一樣，但程式碼可以更簡潔。</p></li>
+<li><p>d </p></li>
+</ol>
+<h2 id="solution">Solution</h2>
+<pre><code>ListNode* Solution::addTwoNumbers(ListNode* l1, ListNode* l2) {
+    ListNode *currNode_l1 = l1;
+    ListNode *currNode_l2 = l2;
+    ListNode *ResultListNode;
+    ListNode *currResultListNode;// = &amp;ResultListNode;
+    int l1_number;
+    int l2_number;
+    bool overflow = false;  
+    bool flag_first = true;
+    ListNode NewListNode(NULL);
+    while (true){       
+        if (currNode_l1 == NULL) l1_number = 0; else l1_number = currNode_l1-&gt;val;
+        if (currNode_l2 == NULL) l2_number = 0; else l2_number = currNode_l2-&gt;val;      
+
+    ListNode *NewListNode = new ListNode(NULL);
+    if (flag_first) {
+        ResultListNode = NewListNode;
+        flag_first = false;
+        NewListNode-&gt;val = l1_number + l2_number;
+        if (NewListNode-&gt;val &gt;= 10){
+            overflow = true;
+            NewListNode-&gt;val = NewListNode-&gt;val % 10;
+        }
+
+    }else{
+        currResultListNode-&gt;next = NewListNode;
+        if (overflow) NewListNode-&gt;val = l1_number + l2_number + 1;
+        else NewListNode-&gt;val = l1_number + l2_number;
+        overflow = false;
+        if (NewListNode-&gt;val &gt;= 10){
+            overflow = true;
+            NewListNode-&gt;val = NewListNode-&gt;val % 10;
+        }
+        else{
+            overflow = false;
+            NewListNode-&gt;val = NewListNode-&gt;val;
+        }
+    }
+
+    currResultListNode = NewListNode;
+
+    if (currNode_l1 != NULL){
+        if (currNode_l1-&gt;next!=NULL) currNode_l1 = currNode_l1-&gt;next;
+        else currNode_l1 = NULL;
+    }
+    if (currNode_l2 != NULL){
+        if (currNode_l2-&gt;next != NULL)currNode_l2 = currNode_l2-&gt;next;
+        else currNode_l2 = NULL;
+    }
+
+    if (currNode_l1 == NULL &amp;&amp; currNode_l2 == NULL){
+        if (overflow){
+            ListNode *NewListNode = new ListNode(NULL);
+            NewListNode-&gt;val = 1;               
+            currResultListNode-&gt;next = NewListNode;
+            break; 
+        }else{ break; }
+    }
+}
+
+
+return ResultListNode;
+</code></pre>
+<p>}</p>
+<h2 id="othersolution">Other Solution</h2>
+<pre><code>public class Solution {
+public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    ListNode c1 = l1;
+    ListNode c2 = l2;
+    ListNode sentinel = new ListNode(0);
+    ListNode d = sentinel;
+    int sum = 0;
+    while (c1 != null || c2 != null) {
+        sum /= 10;
+        if (c1 != null) {
+            sum += c1.val;
+            c1 = c1.next;
+        }
+        if (c2 != null) {
+            sum += c2.val;
+            c2 = c2.next;
+        }
+        d.next = new ListNode(sum % 10);
+        d = d.next;
+    }
+    if (sum / 10 == 1)
+        d.next = new ListNode(1);
+    return sentinel.next;
+}
+}
+</code></pre></div>
+</div>
+</div>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'></script>
+</body>
+</html>

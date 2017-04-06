@@ -1,0 +1,40 @@
+<!DOCTYPE html><html>
+<head>
+<script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>
+</head>
+<body>
+<div class='container'>
+<div class='row'>
+<div class='col-lg-12 bg-warning'>
+<h1 id="540singleelementinasortedarray">540. Single Element in a Sorted Array</h1>
+<h2 id="description">description</h2>
+<p>Given a sorted array consisting of only integers where every element appears twice except for one element which appears once. Find this single element that appears only once.</p>
+<h3 id="example1">Example 1:</h3>
+<p>Input: [1,1,2,3,3,4,4,8,8]</p>
+<p>Output: 2</p>
+<h3 id="example2">Example 2:</h3>
+<p>Input: [3,3,7,7,10,11,11]</p>
+<p>Output: 10</p>
+<h2 id="solution">Solution</h2>
+<pre><code>int Solution::singleNonDuplicate(vector&lt;int&gt;&amp; nums) {    
+    stack &lt;int&gt;tmp;
+    for (int i = 0; i &lt; nums.size(); i++){
+        if (tmp.empty()) tmp.push(nums[i]);
+        else{
+            if (tmp.top() == nums[i]){
+                tmp.pop();
+            }else{
+                tmp.push(nums[i]);
+            }
+        }
+    }
+    int result = tmp.top();
+    return result;
+}
+</code></pre></div>
+</div>
+</div>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'></script>
+</body>
+</html>
