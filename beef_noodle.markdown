@@ -1,6 +1,5 @@
 #牛肉麵
 @u2b https://www.youtube.com/embed/cyeuDeM4UUg @u2bee 
-
 ##備料 
 
 1. 蔥(2-3)、薑(5)、蒜(5)、辣椒(2)、蕃茄(3)、白蘿蔔(3)、洋蔥(2)、紅蘿蔔(三分之二)、香菜
