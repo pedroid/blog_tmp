@@ -17,18 +17,22 @@
 }
 
 .sort-wrapper-tag{
-	width: 72%;
+	width: 100%;
+	background-color: #c2dfea;
 }
 
 .sort{
-	width: 36px;
-	height: 36px;
+	padding-top: 10px;
+	text-align: center;
+	vertical-align: middle;
+	width: 150px;
+	height: 30px;
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	float: left;
 	margin: 3px 2px;
 	cursor: pointer;
-	border-radius: 36px;
+	border-radius: 5px;
 	border: #f5faf1 2px solid;
 	transition: border .5s;
 	-moz-transition: -moz-border .5s;
